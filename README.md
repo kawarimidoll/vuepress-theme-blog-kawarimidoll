@@ -1,13 +1,5 @@
-# yarn-template
+# vuepress-theme-blog-kawarimidoll
 
-Template repository to create yarn project
+This is my blog theme.
 
-## dependencies
-
-- eslint
-- eslint-config-prettier
-- husky
-- lint-staged
-- prettier
-- rimraf
-- sort-package-json
+Inspired: [ttskch/vuepress-theme-blog-vuetify](https://github.com/ttskch/vuepress-theme-blog-vuetify)
