@@ -5,12 +5,16 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(fab, fas, far);
 
+import TitleModifier from "./mixins/TitleModifier";
+
 import {
   Pagination,
   SimplePagination,
 } from "@vuepress/plugin-blog/lib/client/components";
 
 export default ({ Vue }) => {
+  Vue.mixin(TitleModifier);
+
   Vue.component("Pagination", Pagination);
   Vue.component("SimplePagination", SimplePagination);
   Vue.component("faIcon", FontAwesomeIcon);

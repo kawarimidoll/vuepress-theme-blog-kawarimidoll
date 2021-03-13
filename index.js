@@ -1,12 +1,15 @@
 const defaults = require("./defaults");
 
 module.exports = (option, ctx) => {
-  const { themeConfig } = ctx;
+  const { themeConfig, siteConfig } = ctx;
 
   const blogOptions = Object.assign(
     defaults.blogOptions,
     themeConfig.blogOptions || {}
   );
+
+  themeConfig.directories ||= blogOptions.directories;
+  themeConfig.frontmatters ||= blogOptions.frontmatters;
 
   const searchOptions = Object.assign(
     defaults.searchOptions,
@@ -22,6 +25,8 @@ module.exports = (option, ctx) => {
     defaults.tailwindOptions,
     themeConfig.tailwindOptions || {}
   );
+
+  siteConfig.themeConfig = themeConfig;
 
   return {
     name: "vuepress-theme-blog-kawarimidoll",
