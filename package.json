@@ -1,0 +1,28 @@
+{
+  "name": "yarn-template",
+  "version": "0.0.0",
+  "repository": "https://github.com/kawarimidoll/yarn-template",
+  "license": "MIT",
+  "author": "kawarimidoll <kawarimidoll+git@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "preci": "rimraf node_modules",
+    "ci": "yarn install --frozen-lockfile",
+    "lint": "eslint .",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "package.json": "sort-package-json",
+    "*.{js,jsx,vue}": "eslint",
+    "*.{js,jsx,vue,json,md,html,css,yml}": "prettier --write"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "husky": "^5.1.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "sort-package-json": "^1.49.0"
+  }
+}
