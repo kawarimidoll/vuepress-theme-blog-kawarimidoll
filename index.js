@@ -1,7 +1,12 @@
+const removeMd = require("remove-markdown");
 const defaults = require("./defaults");
 
 module.exports = (option, ctx) => {
-  const { themeConfig, siteConfig } = ctx;
+  const { siteConfig } = ctx;
+  const themeConfig = Object.assign(
+    defaults.themeConfig,
+    ctx.themeConfig || {}
+  );
 
   const blogOptions = Object.assign(
     defaults.blogOptions,
@@ -28,8 +33,36 @@ module.exports = (option, ctx) => {
 
   siteConfig.themeConfig = themeConfig;
 
+  const extendPageData = (page) => {
+    if (themeConfig.summary > 0) {
+      const content = page.excerpt || page._strippedContent;
+      if (!content) {
+        return;
+      }
+
+      const summary = removeMd(
+        content
+          .trim()
+          .replace(/:::.*(\n|\r|$)/g, "") // remove custom container sign
+          .replace(/\[\[toc\]\]/gi, "") // remove [[toc]]
+          .replace(/(\|\s*:?-+:?\s*)+\|/g, "") // remove table border
+      ).replace(/\s+/g, " ");
+
+      if (page.excerpt) {
+        page.summary = summary + " ...";
+      } else {
+        page.summary =
+          summary.slice(0, themeConfig.summary) +
+          (summary.length > themeConfig.summary ? " ..." : "");
+      }
+
+      page.frontmatter.description ||= page.frontmatter.summary || page.summary;
+    }
+  };
+
   return {
     name: "vuepress-theme-blog-kawarimidoll",
+    extendPageData,
     plugins: [
       ["@vuepress/blog", blogOptions],
       "@vuepress/nprogress",

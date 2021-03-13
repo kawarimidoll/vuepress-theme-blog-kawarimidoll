@@ -1,3 +1,7 @@
+const themeConfig = {
+  summary: 200,
+};
+
 const searchOptions = {
   searchMaxSuggestions: 10,
   test: null,
@@ -38,6 +42,7 @@ const seoOptions = {};
 const tailwindOptions = {};
 
 module.exports = {
+  themeConfig,
   searchOptions,
   blogOptions,
   seoOptions,
