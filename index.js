@@ -68,6 +68,7 @@ module.exports = (option, ctx) => {
     extendPageData,
     plugins: [
       ["@vuepress/blog", blogOptions],
+      ["@vuepress/back-to-top"],
       "@vuepress/nprogress",
       "table-of-contents",
       "smooth-scroll",

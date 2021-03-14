@@ -24,6 +24,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "@kawarimidoll/vuepress-plugin-tailwind": "^2.0.0",
     "@vuepress/plugin-active-header-links": "^1.8.2",
+    "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-blog": "^1.9.4",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
     "@vuepress/plugin-nprogress": "^1.8.2",
