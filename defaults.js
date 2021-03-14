@@ -1,5 +1,6 @@
 const themeConfig = {
   summary: 200,
+  dateFormat: "YYYY-MM-DD",
 };
 
 const searchOptions = {

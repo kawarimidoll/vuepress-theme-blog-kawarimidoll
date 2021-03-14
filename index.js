@@ -3,6 +3,7 @@ const defaults = require("./defaults");
 
 module.exports = (option, ctx) => {
   const { siteConfig } = ctx;
+
   const themeConfig = Object.assign(
     defaults.themeConfig,
     ctx.themeConfig || {}
@@ -34,6 +35,8 @@ module.exports = (option, ctx) => {
   siteConfig.themeConfig = themeConfig;
 
   const extendPageData = (page) => {
+    const { frontmatter } = page;
+
     if (themeConfig.summary > 0) {
       const content = page.excerpt || page._strippedContent;
       if (!content) {
@@ -56,7 +59,7 @@ module.exports = (option, ctx) => {
           (summary.length > themeConfig.summary ? " ..." : "");
       }
 
-      page.frontmatter.description ||= page.frontmatter.summary || page.summary;
+      frontmatter.description ||= frontmatter.summary || page.summary;
     }
   };
 
