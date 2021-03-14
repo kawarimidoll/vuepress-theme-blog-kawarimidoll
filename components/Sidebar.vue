@@ -30,9 +30,11 @@
 </template>
 <script>
 import SearchBox from "@SearchBox";
+import TOC from "@theme/components/TOC";
 export default {
   components: {
     SearchBox,
+    TOC,
   },
   computed: {
     profile() {

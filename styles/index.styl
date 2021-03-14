@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities
+
+  // TOC
+  .table-of-contents
+    @apply p-2 bg-gray-200
+    ul
+      @apply ml-4
+    .router-link-active
+      @apply bg-gray-400
+
+  #content .table-of-contents
+    @apply max-w-4xl

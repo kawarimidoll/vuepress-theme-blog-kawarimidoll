@@ -1248,7 +1248,7 @@
     markdown-it-table-of-contents "^0.4.0"
     prismjs "^1.13.0"
 
-"@vuepress/plugin-active-header-links@1.8.2", "@vuepress/plugin-active-header-links@^1.8.2":
+"@vuepress/plugin-active-header-links@1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-active-header-links/-/plugin-active-header-links-1.8.2.tgz#0cb9b29c826dd97d35357a9b09c962ef782cb793"
   integrity sha512-JmXAQg8D7J8mcKe2Ue3BZ9dOCzJMJXP4Cnkkc/IrqfDg0ET0l96gYWZohCqlvRIWt4f0VPiFAO4FLYrW+hko+g==
@@ -9009,11 +9009,6 @@ vuepress-plugin-social-share@^1.0.0:
   integrity sha512-BBYIPubR7J4IMrgC9djbcidA/XhgqPgz7EdGXLIQ620bEFo1d6ERUDAvTbeNbKiKz6kndvSkPPeN7UZlZvdyGg==
   dependencies:
     deepmerge "^4.2.2"
-
-vuepress-plugin-table-of-contents@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-table-of-contents/-/vuepress-plugin-table-of-contents-1.1.7.tgz#e8b2d1b5e23a41902a4a44772a00eb7688ef6797"
-  integrity sha512-zG35KYsuLSJaQiTavBN/Nk7/mYC4Kl7bTLXWusvcm0zs1wCzFZf78fkNWAmqc0V3z5W92H8HM3FR5vo4aT2w7w==
 
 vuepress@^1.8.2:
   version "1.8.2"

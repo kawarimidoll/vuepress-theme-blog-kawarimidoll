@@ -70,7 +70,6 @@ module.exports = (option, ctx) => {
       ["@vuepress/blog", blogOptions],
       ["@vuepress/back-to-top"],
       "@vuepress/nprogress",
-      "table-of-contents",
       "smooth-scroll",
       [
         "@vuepress/medium-zoom",

@@ -23,7 +23,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "@kawarimidoll/vuepress-plugin-tailwind": "^2.0.0",
-    "@vuepress/plugin-active-header-links": "^1.8.2",
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-blog": "^1.9.4",
     "@vuepress/plugin-medium-zoom": "^1.8.2",
@@ -34,8 +33,7 @@
     "vuepress": "^1.8.2",
     "vuepress-plugin-seo": "^0.1.4",
     "vuepress-plugin-smooth-scroll": "^0.0.10",
-    "vuepress-plugin-social-share": "^1.0.0",
-    "vuepress-plugin-table-of-contents": "^1.1.7"
+    "vuepress-plugin-social-share": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^7.22.0",
