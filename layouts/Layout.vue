@@ -2,8 +2,8 @@
   <div class="flex flex-col min-h-screen">
     <Header />
 
-    <main class="flex-auto">
-      <div class="flex">
+    <main class="container mx-auto px-4 flex-auto">
+      <div class="md:flex">
         <div id="content">
           <PageList v-if="$pagination" :pagination="$pagination" />
           <Page v-else :page="$page" />
