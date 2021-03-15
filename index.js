@@ -73,11 +73,17 @@ module.exports = (option, ctx) => {
       "smooth-scroll",
       [
         "@vuepress/medium-zoom",
-        {
-          selector: "#content article section :not(a) > img",
-        },
+        { selector: "#content article section :not(a) > img" },
       ],
       ["@vuepress/search", searchOptions],
+      [
+        "social-share",
+        {
+          networks: ["twitter", "facebook", "line"],
+          twitterUser: themeConfig.author,
+          isPlain: true,
+        },
+      ],
       ["seo", seoOptions],
       ["container", { type: "tip" }],
       ["container", { type: "warning" }],
