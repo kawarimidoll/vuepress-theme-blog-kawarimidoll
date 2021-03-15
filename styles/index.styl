@@ -28,6 +28,30 @@
       @apply inline
   // social-share
 
+  // header
+  h1, h2, h3, h4, h5, h6
+    @apply font-semibold leading-tight
+
+    {$contentClass}:not(.custom) > &
+      @apply mt-4 mb-2
+      // @apply mt-2 mb-0 pb-4
+      // margin-top (0.5rem - $navbarHeight)
+      // padding-top ($navbarHeight + 1rem)
+
+      &:first-child
+        @apply -mt-6 mb-4
+
+
+        + p, + pre, + .custom-block
+          @apply mt-8
+
+    &:focus a.header-anchor,
+    &:hover a.header-anchor
+      @apply opacity-100
+
+  a.header-anchor
+    @apply -ml-4 opacity-0
+
 #header
   height $navbarHeight
 
