@@ -4,7 +4,7 @@
 
     <main class="container flex-auto my-4">
       <div class="lg:flex">
-        <div id="content" class="px-8">
+        <div id="content" class="lg:px-8">
           <PageList v-if="$pagination" :pagination="$pagination" />
           <Page v-else :page="$page" />
         </div>

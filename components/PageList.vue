@@ -1,16 +1,18 @@
 <template>
   <div>
     <div v-for="page in pages" :key="page.key">
-      <article>
+      <article class="mt-4 mb-8">
         <header>
           <h2>
-            <RouterLink :to="page.path">{{ page.title }}</RouterLink>
+            <RouterLink :to="page.path" class="font-semibold">
+              {{ page.title }}
+            </RouterLink>
           </h2>
 
           <PageMetadata :frontmatter="page.frontmatter" />
         </header>
 
-        <section>
+        <section class="my-2">
           <div v-html="page.summary" />
         </section>
       </article>
