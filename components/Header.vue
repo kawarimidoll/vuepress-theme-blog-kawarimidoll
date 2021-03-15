@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-gray-500">
-    <header
-      class="container mx-auto flex justify-between items-center text-white"
-    >
+  <div id="header" class="bg-gray-500 flex align-center justify-center">
+    <header class="container flex justify-between items-center text-white">
       <RouterLink to="/" class="no-underline text-4xl font-semibold">
-        {{ $siteTitle }}
+        <component :is="titleTag">
+          {{ $siteTitle }}
+        </component>
       </RouterLink>
-      <div class="md:hidden">
+      <div class="lg:hidden">
         <button @click="isOpen = !isOpen" class="focus:outline-none">
           <faIcon :icon="isOpen ? 'times' : 'bars'" class="fa-2x" />
         </button>
@@ -21,6 +21,11 @@ export default {
     return {
       isOpen: false,
     };
+  },
+  computed: {
+    titleTag() {
+      return this.$route.path === "/" ? "h1" : "span";
+    },
   },
 };
 </script>
