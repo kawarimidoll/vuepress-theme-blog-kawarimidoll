@@ -25,7 +25,7 @@
       <p v-html="profile.descriptionHtml" class="mt-4 mb-0" />
     </section>
 
-    <TOC class="sticky top-0 hidden md:block" />
+    <TOC class="sticky top-0 hidden lg:block" />
   </div>
 </template>
 <script>

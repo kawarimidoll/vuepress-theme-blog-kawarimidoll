@@ -2,9 +2,9 @@
   <div class="flex flex-col min-h-screen">
     <Header />
 
-    <main class="container mx-auto px-4 flex-auto">
-      <div class="md:flex">
-        <div id="content">
+    <main class="container flex-auto my-4">
+      <div class="lg:flex">
+        <div id="content" class="px-8">
           <PageList v-if="$pagination" :pagination="$pagination" />
           <Page v-else :page="$page" />
         </div>

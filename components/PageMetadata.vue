@@ -1,17 +1,17 @@
 <template>
   <div class="md:flex">
     <div>
-      <span v-if="published" class="mx-4">
+      <span v-if="published" class="inline-block mx-4">
         <faIcon icon="clock" />
         <time :datetime="published">{{ formatDate(published) }}</time>
       </span>
-      <span v-if="modified" class="mx-4">
+      <span v-if="modified" class="inline-block mx-4">
         <faIcon icon="sync-alt" />
         <time :datetime="modified">{{ formatDate(modified) }}</time>
       </span>
     </div>
     <div>
-      <span v-if="tags.length > 0" class="mx-4">
+      <span v-if="tags.length > 0" class="inline-block mx-4">
         <faIcon icon="tag" />
         <span v-for="tag in tags" :key="tag.key" class="mx-1">
           <RouterLink :to="tag.path">{{ tag.key }}</RouterLink>

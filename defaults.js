@@ -40,7 +40,9 @@ const blogOptions = {
 
 const seoOptions = {};
 
-const tailwindOptions = {};
+const tailwindOptions = {
+  theme: { container: { center: true, padding: "2rem" } },
+};
 
 module.exports = {
   themeConfig,
