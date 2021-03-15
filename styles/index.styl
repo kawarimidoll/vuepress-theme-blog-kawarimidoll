@@ -1,6 +1,75 @@
+$contentClass = '.content__default'
+$sidebarWidth = 30rem
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base
+  body
+    color $textColor
+
+  h1
+    @apply text-4xl
+
+  h2
+    @apply text-2xl pb-1
+
+  h3
+    @apply text-xl
+
+  a
+    @apply font-medium no-underline
+
+    &:hover
+      color $accentColor
+
+  {$contentClass} a,
+  {$sidebarClass} a
+    color $accentColor
+
+  p
+    // @apply my-5
+
+    & > code
+      @apply inline-block mx-1 px-1 bg-gray-200
+
+  p a code
+    @apply font-normal
+    color $accentColor
+
+
+  // kbd
+  // background #eee
+  // border solid 0.15rem #ddd
+  // border-bottom solid 0.25rem #ddd
+  // border-radius 0.15rem
+  // padding 0 0.15em
+
+  blockquote
+    @apply text-base text-gray-600 my-4 mx-0 py-1 pr-0 pl-4 border-l-4 border-solid
+    border-color $accentColor
+
+    & > p
+      @apply m-0
+
+  p, ul, ol
+    @apply my-5 leading-relaxed
+
+  ul, ol
+    @apply pl-5
+    & ul, ol
+      @apply my-0
+
+  ul
+    @apply list-disc
+
+  ol
+    @apply list-decimal
+
+  strong
+    @apply font-semibold
+
 
 @layer utilities
 
