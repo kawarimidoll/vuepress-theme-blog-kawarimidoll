@@ -63,6 +63,18 @@ module.exports = (option, ctx) => {
     }
   };
 
+  const ready = () => {
+    blogOptions.directories.forEach((directory) => {
+      ctx.pages
+        .filter((page) => page.relativePath.startsWith(directory.dirname))
+        .sort((prev, next) => blogOptions.globalPagination.sorter(prev, next))
+        .forEach((p, i, s) => {
+          p.frontmatter.next = s[i - 1] && s[i - 1].regularPath;
+          p.frontmatter.prev = s[i + 1] && s[i + 1].regularPath;
+        });
+    });
+  };
+
   return {
     name: "vuepress-theme-blog-kawarimidoll",
     extendPageData,
@@ -101,5 +113,6 @@ module.exports = (option, ctx) => {
       ],
       ["@kawarimidoll/tailwind", tailwindOptions],
     ],
+    ready,
   };
 };

@@ -13,14 +13,18 @@
     <section>
       <Content :page-key="page.key" />
     </section>
+
+    <PageNav :frontmatter="page.frontmatter" />
   </article>
 </template>
 
 <script>
 import PageMetadata from "@theme/components/PageMetadata";
+import PageNav from "@theme/components/PageNav";
 export default {
   components: {
     PageMetadata,
+    PageNav,
   },
   props: { page: { type: Object, required: true } },
 };
