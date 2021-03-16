@@ -13,29 +13,32 @@ module.exports = (option, ctx) => {
     defaults.blogOptions,
     themeConfig.blogOptions || {}
   );
-
-  themeConfig.directories ||= blogOptions.directories;
-  themeConfig.frontmatters ||= blogOptions.frontmatters;
+  themeConfig.blogOptions = blogOptions;
 
   const searchOptions = Object.assign(
     defaults.searchOptions,
     themeConfig.searchOptions || {}
   );
+  themeConfig.searchOptions = searchOptions;
 
   const seoOptions = Object.assign(
     defaults.seoOptions,
     themeConfig.seoOptions || {}
   );
+  themeConfig.seoOptions = seoOptions;
 
   const tailwindOptions = Object.assign(
     defaults.tailwindOptions,
     themeConfig.tailwindOptions || {}
   );
+  themeConfig.tailwindOptions = tailwindOptions;
 
   siteConfig.themeConfig = themeConfig;
 
   const extendPageData = (page) => {
     const { frontmatter } = page;
+
+    frontmatter.date = page.date;
 
     if (themeConfig.summary > 0) {
       const content = page.excerpt || page._strippedContent;

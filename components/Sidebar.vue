@@ -23,6 +23,21 @@
       </div>
 
       <p v-html="profile.descriptionHtml" class="mt-4 mb-0" />
+
+      <div v-if="recentPosts.length > 0">
+        <h3 class="m-4">Recent Posts</h3>
+
+        <div>
+          <RouterLink
+            v-for="post in recentPosts"
+            :key="post.key"
+            :to="post.path"
+            class="flex block border border-solid rounded-lg border-gray-300 p-2 my-4"
+          >
+            {{ post.title }}
+          </RouterLink>
+        </div>
+      </div>
     </section>
 
     <TOC class="sticky top-0 hidden lg:block" />
@@ -39,6 +54,32 @@ export default {
   computed: {
     profile() {
       return this.$themeConfig.profile || {};
+    },
+    recentPosts() {
+      const { blogOptions } = this.$themeConfig;
+      try {
+        const { dirname } = blogOptions.directories[0];
+
+        // why globalPagination is null...?
+        // const sorter = blogOptions.globalPagination.sorter(prev, next);
+
+        const sorter = (prev, next) =>
+          prev.regularPath < next.regularPath ? 1 : -1;
+
+        return (
+          this.$site.pages
+            .filter(
+              (page) =>
+                page.relativePath && page.relativePath.startsWith(dirname)
+            )
+            .sort((prev, next) => sorter(prev, next))
+            .slice(0, this.$themeConfig.recentPosts) || []
+        );
+      } catch (e) {
+        console.log("recentposts error");
+        console.log(e);
+        return [];
+      }
     },
   },
 };
