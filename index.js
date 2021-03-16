@@ -63,6 +63,35 @@ module.exports = (option, ctx) => {
     }
   };
 
+  const extendMarkdown = (md) => {
+    md.use(require("markdown-it-attrs"));
+    md.use(require("markdown-it-deflist"));
+    md.use(require("markdown-it-fontawesome"));
+    md.use(require("markdown-it-footnote"));
+    md.use(require("markdown-it-imsize"));
+    md.use(require("markdown-it-mark"));
+    md.use(require("markdown-it-sub"));
+    md.use(require("markdown-it-sup"));
+    md.use(require("markdown-it-video"));
+
+    const twemoji = require("twemoji");
+    md.renderer.rules.emoji = (token, idx) =>
+      twemoji.parse(token[idx].content, { folder: "svg", ext: ".svg" });
+
+    md.renderer.rules.footnote_ref = (tokens, idx, options, env) => {
+      // it only works inline-style
+      const { id, subId } = tokens[idx].meta;
+      const { docId, footnotes } = env;
+      const num = Number(id + 1).toString();
+      const idPrefix = typeof docId === "string" ? `-${docId}-` : "";
+      const refNum = `${num}${subId > 0 ? `:${subId}` : ""}`;
+      const fnId = `fn${idPrefix}${num}`;
+      const refId = `fnref${idPrefix}${refNum}`;
+      const title = footnotes.list[id].content || "";
+      return `<sup class="footnote-ref"><a href="#${fnId}" id="${refId}" title="${title}">[${refNum}]</a></sup>`;
+    };
+  };
+
   const ready = () => {
     blogOptions.directories.forEach((directory) => {
       ctx.pages
@@ -78,6 +107,7 @@ module.exports = (option, ctx) => {
   return {
     name: "vuepress-theme-blog-kawarimidoll",
     extendPageData,
+    extendMarkdown,
     plugins: [
       ["@vuepress/blog", blogOptions],
       ["@vuepress/back-to-top"],
