@@ -34,7 +34,17 @@
             :to="post.path"
             class="flex block border border-solid rounded-lg border-gray-300 p-2 my-4"
           >
-            {{ post.title }}
+            <template v-if="post.frontmatter.emoji">
+              <Twemojicon
+                :emoji="post.frontmatter.emoji"
+                iconClass="h-16"
+                class="w-1/4"
+              />
+              <div class="w-3/4 pl-2">
+                {{ post.title }}
+              </div>
+            </template>
+            <template v-else>{{ post.title }}</template>
           </RouterLink>
         </div>
       </div>
@@ -46,10 +56,12 @@
 <script>
 import SearchBox from "@SearchBox";
 import TOC from "@theme/components/TOC";
+import Twemojicon from "@theme/components/Twemojicon";
 export default {
   components: {
     SearchBox,
     TOC,
+    Twemojicon,
   },
   computed: {
     profile() {
