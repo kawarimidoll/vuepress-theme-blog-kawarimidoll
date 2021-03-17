@@ -1,5 +1,5 @@
 $contentClass = '.content__default'
-$sidebarWidth = 40rem
+$contentWidth = 800px
 
 @tailwind base;
 @tailwind components;
@@ -133,7 +133,10 @@ $sidebarWidth = 40rem
   height $footerHeight
 
 #sidebar
-  width $sidebarWidth
+  max-width $contentWidth
+
+#content
+  max-width $contentWidth
 
 .container
   max-width 1185px

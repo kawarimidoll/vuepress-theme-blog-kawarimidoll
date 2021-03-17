@@ -3,12 +3,12 @@
     <Header />
 
     <main class="container flex-auto my-4">
-      <div class="lg:flex">
-        <div id="content" class="lg:px-8">
+      <div class="xl:flex">
+        <div id="content" class="mx-auto xl:mx-0 xl:px-8">
           <PageList v-if="$pagination" :pagination="$pagination" />
           <Page v-else :page="$page" />
         </div>
-        <aside id="sidebar" class="ml-auto">
+        <aside id="sidebar" class="mx-auto xl:mr-0 ml-auto">
           <Sidebar />
         </aside>
       </div>

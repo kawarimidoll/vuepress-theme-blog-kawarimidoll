@@ -6,7 +6,7 @@
           {{ $siteTitle }}
         </component>
       </RouterLink>
-      <div class="lg:hidden">
+      <div class="xl:hidden">
         <button @click="isOpen = !isOpen" class="focus:outline-none">
           <faIcon :icon="isOpen ? 'times' : 'bars'" class="fa-2x" />
         </button>
