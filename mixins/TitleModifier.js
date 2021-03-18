@@ -13,13 +13,18 @@ export default {
         return page.title;
       }
 
+      const { directories, frontmatters } = site.themeConfig.blogOptions;
+      if (!directories || !frontmatters) {
+        return page.title;
+      }
+
       const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
-      const directoryTitles = site.themeConfig.directories.map(
+      const directoryTitles = directories.map(
         (directory) => directory.title || capitalize(directory.id)
       );
 
-      const frontmatterTitles = site.themeConfig.frontmatters.map(
+      const frontmatterTitles = frontmatters.map(
         (frontmatter) => frontmatter.title || capitalize(frontmatter.id)
       );
 
