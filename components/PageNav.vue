@@ -33,13 +33,13 @@ export default {
   computed: {
     prev() {
       return this.$site.pages.find(
-        (page) => page.regularPath === this.frontmatter.prev
+        ({ regularPath }) => regularPath === this.frontmatter.prev
       );
     },
 
     next() {
       return this.$site.pages.find(
-        (page) => page.regularPath === this.frontmatter.next
+        ({ regularPath }) => regularPath === this.frontmatter.next
       );
     },
   },

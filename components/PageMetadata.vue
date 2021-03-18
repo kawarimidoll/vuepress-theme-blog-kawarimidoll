@@ -22,6 +22,7 @@
 </template>
 
 <script>
+// In honest, I want to use optional chaining...
 const dayjs = require("dayjs");
 export default {
   props: { frontmatter: { type: Object, required: true } },
@@ -33,13 +34,13 @@ export default {
       const publishedTime = this.frontmatter.meta.find(
         (meta) => meta.property === "article:published_time"
       );
-      return publishedTime ? publishedTime.content : null;
+      return publishedTime && publishedTime.content;
     },
     modified() {
       const modifiedTime = this.frontmatter.meta.find(
         (meta) => meta.property === "article:modified_time"
       );
-      return modifiedTime ? modifiedTime.content : null;
+      return modifiedTime && modifiedTime.content;
     },
   },
   methods: {

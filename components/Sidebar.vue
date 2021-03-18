@@ -81,8 +81,8 @@ export default {
         return (
           this.$site.pages
             .filter(
-              (page) =>
-                page.relativePath && page.relativePath.startsWith(dirname)
+              ({ relativePath }) =>
+                relativePath && relativePath.startsWith(dirname)
             )
             .sort((prev, next) => sorter(prev, next))
             .slice(0, this.$themeConfig.recentPosts) || []
