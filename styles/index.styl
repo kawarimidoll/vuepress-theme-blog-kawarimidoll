@@ -97,6 +97,12 @@ $contentWidth = 800px
   .border-accent
     border-color $accentColor
 
+  .navbar-height
+    height $navbarHeight
+
+  .centering-child
+    @apply flex items-center justify-center
+
   // header
   h1, h2, h3, h4, h5, h6
     @apply font-semibold leading-tight
@@ -123,9 +129,6 @@ $contentWidth = 800px
   img.emoji
     @apply inline w-4 h-4 mr-2 ml-4 my-0
     vertical-align -0.1em
-
-#header
-  height $navbarHeight
 
 #footer
   height $footerHeight
