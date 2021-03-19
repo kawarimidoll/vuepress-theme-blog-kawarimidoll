@@ -25,18 +25,17 @@
       <p v-html="profile.descriptionHtml" class="my-4" />
 
       <div>
-        <a
+        <EzLink
           v-for="item in linkIcons"
           :key="item.url"
-          :href="item.url"
+          :to="item.url"
           :title="item.name || item.url"
-          target="_blank"
-          rel="noopener noreferrer"
+          :noIcon="true"
           :aria-label="item.icon"
           class="inline-block px-1 text-accent"
         >
           <faIcon :icon="item.icon" class="text-4xl" />
-        </a>
+        </EzLink>
       </div>
 
       <div v-if="recentPosts.length > 0">
@@ -70,11 +69,13 @@
 </template>
 <script>
 import SearchBox from "@SearchBox";
+import EzLink from "@theme/components/EzLink";
 import TOC from "@theme/components/TOC";
 import Twemojicon from "@theme/components/Twemojicon";
 export default {
   components: {
     SearchBox,
+    EzLink,
     TOC,
     Twemojicon,
   },
