@@ -14,6 +14,12 @@ module.exports = (option, ctx) => {
     themeConfig.blogOptions || {}
   );
   themeConfig.blogOptions = blogOptions;
+  if (blogOptions.feed) {
+    themeConfig.linkIcons = [
+      ...(themeConfig.linkIcons || []),
+      { icon: "rss", name: "rss", url: "/rss.xml" },
+    ];
+  }
 
   const searchOptions = Object.assign(
     defaults.searchOptions,
@@ -96,6 +102,8 @@ module.exports = (option, ctx) => {
   };
 
   const ready = () => {
+    // console.log("ready");
+    // console.log(themeConfig.blogOptions.globalPagination);
     blogOptions.directories.forEach((directory) => {
       ctx.pages
         .filter((page) => page.relativePath.startsWith(directory.dirname))

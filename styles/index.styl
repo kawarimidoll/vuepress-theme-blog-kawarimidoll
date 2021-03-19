@@ -83,8 +83,6 @@ $contentWidth = 800px
   #content .table-of-contents
     @apply max-w-4xl m-2
 
-  // TOC
-
   // social-share
   .social-share-global
     button:focus
@@ -93,7 +91,11 @@ $contentWidth = 800px
     svg
       @apply inline
 
-  // social-share
+  .text-accent
+    color $accentColor
+
+  .border-accent
+    border-color $accentColor
 
   // header
   h1, h2, h3, h4, h5, h6
