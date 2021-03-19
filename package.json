@@ -9,10 +9,12 @@
     "preci": "rimraf node_modules",
     "ci": "yarn install --frozen-lockfile",
     "lint": "eslint .",
+    "lint:styl": "stylint styles/* --config .stylint.json ",
     "prepare": "husky install"
   },
   "lint-staged": {
     "package.json": "sort-package-json",
+    "*.styl": "stylus-supremacy format --replace --options supremacy.json",
     "*.{js,jsx,vue}": "eslint",
     "*.{js,jsx,vue,json,md,html,css,yml}": "prettier --write"
   },
@@ -53,6 +55,8 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "sort-package-json": "^1.49.0"
+    "sort-package-json": "^1.49.0",
+    "stylint": "^2.0.0",
+    "stylus-supremacy": "^2.15.0"
   }
 }

@@ -1,10 +1,6 @@
 $contentClass = '.content__default'
 $contentWidth = 800px
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@tailwind base@tailwind components@tailwind utilities
 @layer base
   body
     color $textColor
@@ -24,13 +20,11 @@ $contentWidth = 800px
     &:hover
       color $accentColor
 
-  {$contentClass} a,
-  {$sidebarClass} a
+  {$contentClass} a, {$sidebarClass} a
     color $accentColor
 
   p
     // @apply my-5
-
     & > code
       @apply inline-block mx-1 px-1 bg-gray-200
 
@@ -38,14 +32,12 @@ $contentWidth = 800px
     @apply font-normal
     color $accentColor
 
-
   // kbd
   // background #eee
   // border solid 0.15rem #ddd
   // border-bottom solid 0.25rem #ddd
   // border-radius 0.15rem
   // padding 0 0.15em
-
   blockquote
     @apply text-base text-gray-600 my-4 mx-0 py-1 pr-0 pl-4 border-l-4 border-solid
     border-color $accentColor
@@ -58,6 +50,7 @@ $contentWidth = 800px
 
   ul, ol
     @apply pl-5
+
     & ul, ol
       @apply my-0
 
@@ -70,31 +63,36 @@ $contentWidth = 800px
   strong
     @apply font-semibold
 
-
 @layer utilities
-
   // TOC
   .table-of-contents
     @apply p-2
+
     ul
       @apply pl-4 list-none
+
     a
       @apply block text-gray-400
+
       &:hover
         @apply text-gray-900
+
     .router-link-active
       @apply text-gray-900
 
   #content .table-of-contents
     @apply max-w-4xl m-2
+
   // TOC
 
   // social-share
   .social-share-global
     button:focus
       @apply outline-none
+
     svg
       @apply inline
+
   // social-share
 
   // header
@@ -103,19 +101,17 @@ $contentWidth = 800px
 
     {$contentClass}:not(.custom) > &
       @apply mt-4 mb-2
+
       // @apply mt-2 mb-0 pb-4
       // margin-top (0.5rem - $navbarHeight)
       // padding-top ($navbarHeight + 1rem)
-
       &:first-child
         @apply -mt-6 mb-4
-
 
         + p, + pre, + .custom-block
           @apply mt-8
 
-    &:focus a.header-anchor,
-    &:hover a.header-anchor
+    &:focus a.header-anchor, &:hover a.header-anchor
       @apply opacity-100
 
   a.header-anchor
