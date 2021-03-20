@@ -24,14 +24,13 @@
 
       <p v-html="profile.descriptionHtml" class="my-4" />
 
-      <div>
+      <div class="centering-child">
         <EzLink
           v-for="item in linkIcons"
           :key="item.url"
           :to="item.url"
           :title="item.name || item.url"
           :noIcon="true"
-          :aria-label="item.icon"
           class="inline-block px-1 text-accent"
         >
           <faIcon :icon="item.icon" class="text-4xl" />
