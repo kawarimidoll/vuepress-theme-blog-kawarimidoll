@@ -36,8 +36,10 @@ export default {
     Sidebar,
   },
   created() {
-    console.log("theme layout here!");
-    console.log(this);
+    if (!this.$themeConfig.isProd) {
+      console.log("theme layout here!");
+      console.log(this);
+    }
     this.afterFooterComponent = Vue.component(
       this.$themeConfig.components.afterFooter
     );

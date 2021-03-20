@@ -2,7 +2,7 @@ const removeMd = require("remove-markdown");
 const defaults = require("./defaults");
 
 module.exports = (option, ctx) => {
-  const { siteConfig } = ctx;
+  const { siteConfig, isProd } = ctx;
 
   const themeConfig = Object.assign(
     defaults.themeConfig,
@@ -44,6 +44,8 @@ module.exports = (option, ctx) => {
     themeConfig.components || {}
   );
   themeConfig.components = components;
+
+  themeConfig.isProd = isProd;
 
   siteConfig.themeConfig = themeConfig;
 
