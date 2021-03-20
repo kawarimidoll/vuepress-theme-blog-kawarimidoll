@@ -8,7 +8,7 @@
   "scripts": {
     "preci": "rimraf node_modules",
     "ci": "yarn install --frozen-lockfile",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.vue",
     "lint:styl": "stylint styles/* --config .stylint.json ",
     "prepare": "husky install"
   },

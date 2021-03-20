@@ -45,10 +45,15 @@ const tailwindOptions = {
   theme: { container: { center: true, padding: "2rem" } },
 };
 
+const components = {
+  afterFooter: "DefaultAfterFooter",
+};
+
 module.exports = {
   themeConfig,
   searchOptions,
   blogOptions,
   seoOptions,
   tailwindOptions,
+  components,
 };

@@ -12,10 +12,14 @@ import {
   SimplePagination,
 } from "@vuepress/plugin-blog/lib/client/components";
 
+import DefaultAfterFooter from "./components/extensions/AfterFooter";
+
 export default ({ Vue }) => {
   Vue.mixin(TitleModifier);
 
   Vue.component("Pagination", Pagination);
   Vue.component("SimplePagination", SimplePagination);
   Vue.component("faIcon", FontAwesomeIcon);
+
+  Vue.component("DefaultAfterFooter", DefaultAfterFooter);
 };

@@ -15,10 +15,13 @@
     </main>
 
     <Footer />
+
+    <component :is="afterFooterComponent" />
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import Footer from "@theme/components/Footer";
 import Header from "@theme/components/Header";
 import Page from "@theme/components/Page";
@@ -35,6 +38,14 @@ export default {
   created() {
     console.log("theme layout here!");
     console.log(this);
+    this.afterFooterComponent = Vue.component(
+      this.$themeConfig.components.afterFooter
+    );
+  },
+  data() {
+    return {
+      afterFooterComponent: null,
+    };
   },
 };
 </script>

@@ -39,6 +39,12 @@ module.exports = (option, ctx) => {
   );
   themeConfig.tailwindOptions = tailwindOptions;
 
+  const components = Object.assign(
+    defaults.components,
+    themeConfig.components || {}
+  );
+  themeConfig.components = components;
+
   siteConfig.themeConfig = themeConfig;
 
   const extendPageData = (page) => {
