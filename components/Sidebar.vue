@@ -37,6 +37,21 @@
         </EzLink>
       </div>
 
+      <div>
+        <div v-for="frontmatterKey in frontmatterKeys" :key="frontmatterKey.id">
+          <h3 class="m-4">{{ capitalize(frontmatterKey.id) }}</h3>
+          <EzLink
+            v-for="item in frontmatterKey.list"
+            :key="item[0]"
+            :to="frontmatterKey.path + item[0]"
+            :title="item[0]"
+            class="inline-block border border-solid rounded-lg border-gray-300 p-2 m-1"
+          >
+            {{ item[0] }} ({{ item[1] }})
+          </EzLink>
+        </div>
+      </div>
+
       <div v-if="recentPosts.length > 0">
         <h3 class="m-4">Recent Posts</h3>
 
@@ -110,6 +125,32 @@ export default {
         console.lowarn(e);
         return [];
       }
+    },
+    frontmatterKeys() {
+      const { blogOptions } = this.$themeConfig;
+      const { pages } = this.$site;
+      try {
+        return blogOptions.frontmatters.map((target) => {
+          const obj = {};
+          pages.forEach((page) =>
+            (page.frontmatter[target.keys] || []).forEach(
+              (key) => (obj[key] = (obj[key] || 0) + 1)
+            )
+          );
+          target.list = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+          console.log(target);
+          return target;
+        });
+      } catch (e) {
+        console.warn("frontmatterKeys error");
+        console.warn(e);
+        return [];
+      }
+    },
+  },
+  methods: {
+    capitalize(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
     },
   },
 };

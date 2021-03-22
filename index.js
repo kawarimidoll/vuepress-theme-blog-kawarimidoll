@@ -21,6 +21,15 @@ module.exports = (option, ctx) => {
     ];
   }
 
+  const navLinks = themeConfig.navLinks || {};
+  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+  blogOptions.frontmatters.forEach(({ id, path }) => {
+    if (!navLinks.find((navLink) => navLink.path === path)) {
+      navLinks.push({ label: capitalize(id), path });
+    }
+  });
+  themeConfig.navLinks = navLinks;
+
   const searchOptions = Object.assign(
     defaults.searchOptions,
     themeConfig.searchOptions || {}

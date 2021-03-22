@@ -24,14 +24,14 @@ const blogOptions = {
   ],
   frontmatters: [
     {
-      id: "tag",
-      keys: ["tags"],
-      path: "/tags/",
-    },
-    {
       id: "category",
       keys: ["categories"],
       path: "/categories/",
+    },
+    {
+      id: "tag",
+      keys: ["tags"],
+      path: "/tags/",
     },
   ],
   globalPagination: {
