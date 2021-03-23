@@ -39,13 +39,18 @@
 
       <div>
         <div v-for="frontmatterKey in frontmatterKeys" :key="frontmatterKey.id">
-          <h3 class="m-4">{{ capitalize(frontmatterKey.id) }}</h3>
+          <div class="flex items-baseline">
+            <h3 class="m-4">{{ capitalize(frontmatterKey.id) }}</h3>
+            <RouterLink :to="frontmatterKey.path" class="block text-accent">
+              show all ({{ frontmatterKey.list.length }})
+            </RouterLink>
+          </div>
           <EzLink
-            v-for="item in frontmatterKey.list"
+            v-for="item in frontmatterKey.list.slice(0, 3)"
             :key="item[0]"
             :to="frontmatterKey.path + item[0]"
             :title="item[0]"
-            class="inline-block border border-solid rounded-lg border-gray-300 p-2 m-1"
+            class="inline-block border border-solid rounded-lg border-gray-300 px-2 py-1 m-1"
           >
             {{ item[0] }} ({{ item[1] }})
           </EzLink>
@@ -127,25 +132,7 @@ export default {
       }
     },
     frontmatterKeys() {
-      const { blogOptions } = this.$themeConfig;
-      const { pages } = this.$site;
-      try {
-        return blogOptions.frontmatters.map((target) => {
-          const obj = {};
-          pages.forEach((page) =>
-            (page.frontmatter[target.keys] || []).forEach(
-              (key) => (obj[key] = (obj[key] || 0) + 1)
-            )
-          );
-          target.list = Object.entries(obj).sort((a, b) => b[1] - a[1]);
-          console.log(target);
-          return target;
-        });
-      } catch (e) {
-        console.warn("frontmatterKeys error");
-        console.warn(e);
-        return [];
-      }
+      return this.$themeConfig.frontmatterKeys;
     },
   },
   methods: {

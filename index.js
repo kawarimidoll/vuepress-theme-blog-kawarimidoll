@@ -119,16 +119,28 @@ module.exports = (option, ctx) => {
   };
 
   const ready = () => {
-    // console.log("ready");
-    // console.log(themeConfig.blogOptions.globalPagination);
+    const { pages } = ctx;
     blogOptions.directories.forEach((directory) => {
-      ctx.pages
+      pages
         .filter((page) => page.relativePath.startsWith(directory.dirname))
         .sort((prev, next) => blogOptions.globalPagination.sorter(prev, next))
         .forEach((p, i, s) => {
           p.frontmatter.next = s[i - 1] && s[i - 1].regularPath;
           p.frontmatter.prev = s[i + 1] && s[i + 1].regularPath;
         });
+    });
+
+    // setup frontmatterKeys
+    themeConfig.frontmatterKeys = blogOptions.frontmatters.map((target) => {
+      const obj = {};
+      pages.forEach((page) =>
+        (page.frontmatter[target.keys] || []).forEach(
+          (key) => (obj[key] = (obj[key] || 0) + 1)
+        )
+      );
+      target.list = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+      // console.log(target);
+      return target;
     });
   };
 
