@@ -1,5 +1,5 @@
 const themeConfig = {
-  recentPosts: 10,
+  recentPostsLength: 10,
   summary: 200,
   dateFormat: "YYYY-MM-DD",
 };

@@ -120,13 +120,27 @@ module.exports = (option, ctx) => {
 
   const ready = () => {
     const { pages } = ctx;
+
+    themeConfig.recentPosts = {};
+
+    // add prev/next links
     blogOptions.directories.forEach((directory) => {
+      themeConfig.recentPosts[directory.id] = [];
       pages
         .filter((page) => page.relativePath.startsWith(directory.dirname))
         .sort((prev, next) => blogOptions.globalPagination.sorter(prev, next))
         .forEach((p, i, s) => {
           p.frontmatter.next = s[i - 1] && s[i - 1].regularPath;
           p.frontmatter.prev = s[i + 1] && s[i + 1].regularPath;
+          if (i < themeConfig.recentPostsLength) {
+            // page should be serialized to avoid circular reference
+            themeConfig.recentPosts[directory.id].push({
+              title: p.title,
+              key: p.key,
+              path: p.path,
+              frontmatter: { emoji: p.frontmatter.emoji },
+            });
+          }
         });
     });
 

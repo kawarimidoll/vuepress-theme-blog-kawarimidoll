@@ -106,30 +106,7 @@ export default {
       return this.$themeConfig.linkIcons || [];
     },
     recentPosts() {
-      const { blogOptions } = this.$themeConfig;
-      try {
-        const { dirname } = blogOptions.directories[0];
-
-        // why globalPagination is null...?
-        // const sorter = blogOptions.globalPagination.sorter(prev, next);
-
-        const sorter = (prev, next) =>
-          prev.regularPath < next.regularPath ? 1 : -1;
-
-        return (
-          this.$site.pages
-            .filter(
-              ({ relativePath }) =>
-                relativePath && relativePath.startsWith(dirname)
-            )
-            .sort((prev, next) => sorter(prev, next))
-            .slice(0, this.$themeConfig.recentPosts) || []
-        );
-      } catch (e) {
-        console.warn("recentposts error");
-        console.lowarn(e);
-        return [];
-      }
+      return this.$themeConfig.recentPosts["post"];
     },
     frontmatterKeys() {
       return this.$themeConfig.frontmatterKeys;
