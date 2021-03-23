@@ -37,25 +37,12 @@
         </EzLink>
       </div>
 
-      <div>
-        <div v-for="frontmatterKey in frontmatterKeys" :key="frontmatterKey.id">
-          <div class="flex items-baseline">
-            <h3 class="m-4">{{ capitalize(frontmatterKey.id) }}</h3>
-            <RouterLink :to="frontmatterKey.path" class="block text-accent">
-              show all ({{ frontmatterKey.list.length }})
-            </RouterLink>
-          </div>
-          <EzLink
-            v-for="item in frontmatterKey.list.slice(0, 3)"
-            :key="item[0]"
-            :to="frontmatterKey.path + item[0]"
-            :title="item[0]"
-            class="inline-block border border-solid rounded-lg border-gray-300 px-2 py-1 m-1"
-          >
-            {{ item[0] }} ({{ item[1] }})
-          </EzLink>
-        </div>
-      </div>
+      <FrontmatterKeyList
+        v-for="frontmatterKey in frontmatterKeys"
+        :key="frontmatterKey.id"
+        :frontmatterKey="frontmatterKey"
+        :limit="3"
+      />
 
       <div v-if="recentPosts.length > 0">
         <h3 class="m-4">Recent Posts</h3>
@@ -88,12 +75,14 @@
 </template>
 <script>
 import SearchBox from "@SearchBox";
+import FrontmatterKeyList from "@theme/components/FrontmatterKeyList";
 import EzLink from "@theme/components/EzLink";
 import TOC from "@theme/components/TOC";
 import Twemojicon from "@theme/components/Twemojicon";
 export default {
   components: {
     SearchBox,
+    FrontmatterKeyList,
     EzLink,
     TOC,
     Twemojicon,
@@ -110,11 +99,6 @@ export default {
     },
     frontmatterKeys() {
       return this.$themeConfig.frontmatterKeys;
-    },
-  },
-  methods: {
-    capitalize(text) {
-      return text.charAt(0).toUpperCase() + text.slice(1);
     },
   },
 };
