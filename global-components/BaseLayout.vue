@@ -3,11 +3,11 @@
     <Header />
 
     <main class="container flex-auto my-4">
-      <div class="xl:flex">
-        <div id="content" class="mx-auto xl:mx-0 xl:px-8">
+      <div class="px-8 xl:px-0 xl:flex">
+        <div id="content" class="xl:mx-8 xl:content-width">
           <slot name="content" />
         </div>
-        <aside id="sidebar" class="mx-auto xl:mr-0 ml-auto">
+        <aside id="sidebar">
           <Sidebar />
         </aside>
       </div>

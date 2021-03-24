@@ -1,5 +1,7 @@
 $contentClass = '.content__default'
+$containerWidth = 1185px
 $contentWidth = 800px
+$sidebarWidth = 385px
 @tailwind base@tailwind components@tailwind utilities
 @layer base
   body
@@ -133,11 +135,15 @@ $contentWidth = 800px
     @apply inline w-4 h-4 mr-2 ml-4 my-0
     vertical-align -0.1em
 
-#sidebar
-  max-width $contentWidth
+  #sidebar
+    max-width $sidebarWidth
 
-#content
-  max-width $contentWidth
+  #content
+    max-width $contentWidth
 
-.container
-  max-width 1185px
+  .container
+    max-width $containerWidth
+
+  @variants responsive
+    .content-width
+      width $contentWidth

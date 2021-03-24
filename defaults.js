@@ -42,7 +42,7 @@ const blogOptions = {
 const seoOptions = {};
 
 const tailwindOptions = {
-  theme: { container: { center: true, padding: "2rem" } },
+  theme: { container: { center: true } },
 };
 
 const components = {

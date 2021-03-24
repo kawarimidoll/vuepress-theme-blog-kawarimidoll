@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ frontmatterKey }}
     <header class="flex items-baseline" v-if="!noHeader">
       <h3 class="m-4">{{ capitalize(frontmatterKey.id) }}</h3>
       <RouterLink :to="frontmatterKey.path" class="block text-accent">
