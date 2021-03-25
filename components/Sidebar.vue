@@ -1,6 +1,6 @@
 <template>
   <div id="component-sidebar" class="h-full">
-    <SearchBox />
+    <SearchBox class="w-full px-4 my-2" />
 
     <section class="border border-solid rounded-lg border-gray-300 p-2 m-4">
       <div v-if="profile.avatarUrl" class="mt-2 mb-1 centering-child">
