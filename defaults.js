@@ -47,6 +47,14 @@ const tailwindOptions = {
 
 const components = {
   afterFooter: "DefaultAfterFooter",
+  afterHeader: "DefaultAfterHeader",
+  afterPage: "DefaultAfterPage",
+  afterPageList: "DefaultAfterPageList",
+  afterSidebar: "DefaultAfterSidebar",
+  beforePage: "DefaultBeforePage",
+  beforePageList: "DefaultBeforePageList",
+  beforePagination: "DefaultBeforePagination",
+  beforeSidebar: "DefaultBeforeSidebar",
 };
 
 module.exports = {

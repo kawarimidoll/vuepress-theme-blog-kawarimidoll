@@ -2,6 +2,8 @@
   <div class="flex flex-col min-h-screen">
     <Header />
 
+    <component :is="afterHeaderComponent" />
+
     <main class="container flex-auto my-4">
       <div class="px-8 xl:px-0 xl:flex">
         <div id="content" class="xl:mx-8 xl:content-width">
@@ -42,10 +44,14 @@ export default {
     this.afterFooterComponent = Vue.component(
       this.$themeConfig.components.afterFooter
     );
+    this.afterHeaderComponent = Vue.component(
+      this.$themeConfig.components.afterHeader
+    );
   },
   data() {
     return {
       afterFooterComponent: null,
+      afterHeaderComponent: null,
     };
   },
 };

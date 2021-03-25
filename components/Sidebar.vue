@@ -1,5 +1,7 @@
 <template>
   <div id="component-sidebar" class="h-full">
+    <component :is="beforeSidebarComponent" />
+
     <SearchBox class="w-full px-4 my-2" />
 
     <section class="border border-solid rounded-lg border-gray-300 p-2 m-4">
@@ -64,9 +66,12 @@
     </div>
 
     <TOC class="sticky top-0 hidden xl:block" />
+
+    <component :is="afterSidebarComponent" />
   </div>
 </template>
 <script>
+import Vue from "vue";
 import SearchBox from "@SearchBox";
 import FrontmatterKeyList from "@theme/components/FrontmatterKeyList";
 import EzLink from "@theme/components/EzLink";
@@ -79,6 +84,20 @@ export default {
     EzLink,
     TOC,
     Twemojicon,
+  },
+  created() {
+    this.beforeSidebarComponent = Vue.component(
+      this.$themeConfig.components.beforeSidebar
+    );
+    this.afterSidebarComponent = Vue.component(
+      this.$themeConfig.components.afterSidebar
+    );
+  },
+  data() {
+    return {
+      beforeSidebarComponent: null,
+      afterSidebarComponent: null,
+    };
   },
   computed: {
     profile() {

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <component :is="beforePageListComponent" />
+
     <div v-for="page in pages" :key="page.key">
       <article class="my-6">
         <header class="flex">
@@ -25,10 +27,16 @@
         </section>
       </article>
     </div>
+
+    <component :is="beforePaginationComponent" />
+    <!-- pagination will be here -->
+
+    <component :is="afterPageListComponent" />
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import PageMetadata from "@theme/components/PageMetadata";
 import Twemojicon from "@theme/components/Twemojicon";
 export default {
@@ -38,6 +46,24 @@ export default {
   },
   props: {
     pagination: { type: Object, required: true },
+  },
+  created() {
+    this.beforePaginationComponent = Vue.component(
+      this.$themeConfig.components.beforePagination
+    );
+    this.beforePageListComponent = Vue.component(
+      this.$themeConfig.components.beforePageList
+    );
+    this.afterPageListComponent = Vue.component(
+      this.$themeConfig.components.afterPageList
+    );
+  },
+  data() {
+    return {
+      beforePaginationComponent: null,
+      beforePageListComponent: null,
+      afterPageListComponent: null,
+    };
   },
   computed: {
     pages() {

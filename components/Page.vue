@@ -1,6 +1,8 @@
 <template>
   <article :key="page.key">
     <header>
+      <component :is="beforePageComponent" />
+
       <Twemojicon
         v-if="page.frontmatter.emoji"
         :emoji="page.frontmatter.emoji"
@@ -22,10 +24,13 @@
     </section>
 
     <PageNav :frontmatter="page.frontmatter" />
+
+    <component :is="afterPageComponent" />
   </article>
 </template>
 
 <script>
+import Vue from "vue";
 import PageMetadata from "@theme/components/PageMetadata";
 import PageNav from "@theme/components/PageNav";
 import Twemojicon from "@theme/components/Twemojicon";
@@ -36,5 +41,19 @@ export default {
     Twemojicon,
   },
   props: { page: { type: Object, required: true } },
+  created() {
+    this.beforePageComponent = Vue.component(
+      this.$themeConfig.components.beforePage
+    );
+    this.afterPageComponent = Vue.component(
+      this.$themeConfig.components.afterPage
+    );
+  },
+  data() {
+    return {
+      beforePageComponent: null,
+      afterPageComponent: null,
+    };
+  },
 };
 </script>
