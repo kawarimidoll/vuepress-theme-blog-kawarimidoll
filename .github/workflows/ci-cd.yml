@@ -20,7 +20,7 @@ jobs:
 
       - name: Tag
         id: autotagger
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         uses: butlerlogic/action-autotag@stable
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
