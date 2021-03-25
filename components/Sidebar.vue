@@ -2,27 +2,20 @@
   <div id="component-sidebar" class="h-full">
     <SearchBox />
 
-    <section v-if="profile.avatarUrl || profile.name">
-      <h3 class="mt-0 mb-5">Profile</h3>
-      <div class="flex">
-        <img
-          v-if="profile.avatarUrl"
-          class="block rounded-full"
-          :src="profile.avatarUrl"
-          alt="avatar"
-        />
-
-        <div v-if="profile.name">
-          <p class="my-0">
-            <strong class="name">{{ profile.name }}</strong>
-          </p>
-          <p class="my-0 text-sm">
-            {{ profile.subTitle }}
-          </p>
-        </div>
+    <section class="border border-solid rounded-lg border-gray-300 p-2 m-4">
+      <div v-if="profile.avatarUrl" class="mt-2 mb-1 centering-child">
+        <img class="block rounded-full" :src="profile.avatarUrl" alt="avatar" />
       </div>
 
-      <p v-html="profile.descriptionHtml" class="my-4" />
+      <div v-if="profile.name" class="p-1 centering-child">
+        <strong class="block">{{ profile.name }}</strong>
+      </div>
+      <div v-if="profile.subTitle" class="centering-child">
+        <div class="text-sm">{{ profile.subTitle }}</div>
+      </div>
+      <div v-if="profile.descriptionHtml" class="my-4 centering-child">
+        <div v-html="profile.descriptionHtml" />
+      </div>
 
       <div class="centering-child">
         <EzLink
@@ -36,41 +29,41 @@
           <faIcon :icon="item.icon" class="text-4xl" />
         </EzLink>
       </div>
-
-      <FrontmatterKeyList
-        v-for="frontmatterKey in frontmatterKeys"
-        :key="frontmatterKey.id"
-        :frontmatterKey="frontmatterKey"
-        :limit="3"
-      />
-
-      <div v-if="recentPosts.length > 0">
-        <h3 class="m-4">Recent Posts</h3>
-
-        <div>
-          <RouterLink
-            v-for="post in recentPosts"
-            :key="post.key"
-            :to="post.path"
-            class="flex block border border-solid rounded-lg border-gray-300 p-2 my-4"
-          >
-            <template v-if="post.frontmatter.emoji">
-              <Twemojicon
-                :emoji="post.frontmatter.emoji"
-                iconClass="h-16"
-                class="w-1/4"
-              />
-              <div class="w-3/4 pl-2">
-                {{ post.title }}
-              </div>
-            </template>
-            <template v-else>{{ post.title }}</template>
-          </RouterLink>
-        </div>
-      </div>
     </section>
 
-    <TOC class="sticky top-0 hidden lg:block" />
+    <FrontmatterKeyList
+      v-for="frontmatterKey in frontmatterKeys"
+      :key="frontmatterKey.id"
+      :frontmatterKey="frontmatterKey"
+      :limit="3"
+    />
+
+    <div v-if="recentPosts.length > 0">
+      <h3 class="m-4">Recent Posts</h3>
+
+      <div>
+        <RouterLink
+          v-for="post in recentPosts"
+          :key="post.key"
+          :to="post.path"
+          class="flex block border border-solid rounded-lg border-gray-300 p-2 my-4"
+        >
+          <template v-if="post.frontmatter.emoji">
+            <Twemojicon
+              :emoji="post.frontmatter.emoji"
+              iconClass="h-16"
+              class="w-1/4"
+            />
+            <div class="w-3/4 pl-2">
+              {{ post.title }}
+            </div>
+          </template>
+          <template v-else>{{ post.title }}</template>
+        </RouterLink>
+      </div>
+    </div>
+
+    <TOC class="sticky top-0 hidden xl:block" />
   </div>
 </template>
 <script>
