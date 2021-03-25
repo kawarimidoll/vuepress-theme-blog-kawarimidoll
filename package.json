@@ -9,7 +9,8 @@
     "preci": "rimraf node_modules",
     "ci": "yarn install --frozen-lockfile",
     "lint": "eslint --ext .js,.vue",
-    "lint:styl": "stylint styles/* --config .stylint.json ",
+    "lint:styl": "stylint styles/* --config .stylint.json",
+    "test": "echo 'test is not impremented'",
     "prepare": "husky install"
   },
   "lint-staged": {
