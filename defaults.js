@@ -4,12 +4,6 @@ const themeConfig = {
   dateFormat: "YYYY-MM-DD",
 };
 
-const searchOptions = {
-  searchMaxSuggestions: 10,
-  test: null,
-  searchHotkeys: ["s", "/"],
-};
-
 const blogOptions = {
   directories: [
     {
@@ -39,10 +33,28 @@ const blogOptions = {
   },
 };
 
+const mediumZoomOptions = {
+  selector: "#content article section :not(a) > img",
+};
+
+const searchOptions = {
+  searchMaxSuggestions: 10,
+  test: null,
+  searchHotkeys: ["s", "/"],
+};
+
+const socialShareOptions = {
+  networks: ["twitter", "facebook", "line"],
+  twitterUser: themeConfig.author,
+  isPlain: true,
+};
+
 const seoOptions = {};
 
 const tailwindOptions = {
-  theme: { container: { center: true } },
+  theme: {
+    container: { center: true },
+  },
 };
 
 const components = {
@@ -62,6 +74,8 @@ module.exports = {
   searchOptions,
   blogOptions,
   seoOptions,
+  socialShareOptions,
+  mediumZoomOptions,
   tailwindOptions,
   components,
 };

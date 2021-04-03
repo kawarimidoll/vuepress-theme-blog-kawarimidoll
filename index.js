@@ -22,12 +22,23 @@ module.exports = (option, ctx) => {
     ];
   }
 
+  const mediumZoomOptions = Object.assign(
+    defaults.mediumZoomOptions,
+    themeConfig.mediumZoomOptions || {}
+  );
+  themeConfig.mediumZoomOptions = mediumZoomOptions;
 
   const searchOptions = Object.assign(
     defaults.searchOptions,
     themeConfig.searchOptions || {}
   );
   themeConfig.searchOptions = searchOptions;
+
+  const socialShareOptions = Object.assign(
+    defaults.socialShareOptions,
+    themeConfig.socialShareOptions || {}
+  );
+  themeConfig.socialShareOptions = socialShareOptions;
 
   const seoOptions = Object.assign(
     defaults.seoOptions,
@@ -161,6 +172,15 @@ module.exports = (option, ctx) => {
     });
   };
 
+  const detailsContainer = {
+    type: "details",
+    before: (info) =>
+      `<details class="custom-block details">${
+        info ? `<summary>${info}</summary>` : ""
+      }\n`,
+    after: () => "</details>\n",
+  };
+
   return {
     name: "vuepress-theme-blog-kawarimidoll",
     extendPageData,
@@ -168,36 +188,16 @@ module.exports = (option, ctx) => {
     plugins: [
       ["@vuepress/blog", blogOptions],
       ["@vuepress/back-to-top"],
-      "@vuepress/nprogress",
-      "smooth-scroll",
-      [
-        "@vuepress/medium-zoom",
-        { selector: "#content article section :not(a) > img" },
-      ],
+      ["@vuepress/nprogress"],
+      ["smooth-scroll"],
+      ["@vuepress/medium-zoom", mediumZoomOptions],
       ["@vuepress/search", searchOptions],
-      [
-        "social-share",
-        {
-          networks: ["twitter", "facebook", "line"],
-          twitterUser: themeConfig.author,
-          isPlain: true,
-        },
-      ],
+      ["social-share", socialShareOptions],
       ["seo", seoOptions],
       ["container", { type: "tip" }],
       ["container", { type: "warning" }],
       ["container", { type: "danger" }],
-      [
-        "container",
-        {
-          type: "details",
-          before: (info) =>
-            `<details class="custom-block details">${
-              info ? `<summary>${info}</summary>` : ""
-            }\n`,
-          after: () => "</details>\n",
-        },
-      ],
+      ["container", detailsContainer],
       ["@kawarimidoll/tailwind", tailwindOptions],
     ],
     ready,

@@ -28,19 +28,23 @@ export default {
   props: { frontmatter: { type: Object, required: true } },
   computed: {
     tags() {
-      return this.frontmatter.tags.map((key) => this.$tag._metaMap[key]);
+      return (this.frontmatter.tags || []).map(
+        (key) => this.$tag._metaMap[key]
+      );
     },
     published() {
-      const publishedTime = this.frontmatter.meta.find(
-        (meta) => meta.property === "article:published_time"
-      );
-      return publishedTime && publishedTime.content;
+      return (
+        (this.frontmatter.meta || []).find(
+          (meta) => meta.property === "article:published_time"
+        ) || {}
+      ).content;
     },
     modified() {
-      const modifiedTime = this.frontmatter.meta.find(
-        (meta) => meta.property === "article:modified_time"
-      );
-      return modifiedTime && modifiedTime.content;
+      return (
+        (this.frontmatter.meta || []).find(
+          (meta) => meta.property === "article:modified_time"
+        ) || {}
+      ).content;
     },
   },
   methods: {
