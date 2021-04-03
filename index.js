@@ -157,7 +157,6 @@ module.exports = (option, ctx) => {
         )
       );
       target.list = Object.entries(obj).sort((a, b) => b[1] - a[1]);
-      // console.log(target);
       return target;
     });
   };

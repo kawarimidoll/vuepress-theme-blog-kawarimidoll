@@ -13,10 +13,6 @@
 
         <PageMetadata :frontmatter="page.frontmatter" />
       </div>
-
-      <!-- <div v-if="page.frontmatter.image">                                      -->
-      <!--   <img :src="page.frontmatter.image" :alt="page.title" loading="lazy" /> -->
-      <!-- </div>                                                                   -->
     </header>
 
     <section>

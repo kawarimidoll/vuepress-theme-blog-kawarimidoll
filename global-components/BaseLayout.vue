@@ -25,15 +25,11 @@
 import Vue from "vue";
 import Footer from "@theme/components/Footer";
 import Header from "@theme/components/Header";
-import Page from "@theme/components/Page";
-import PageList from "@theme/components/PageList";
 import Sidebar from "@theme/components/Sidebar";
 export default {
   components: {
     Footer,
     Header,
-    Page,
-    PageList,
     Sidebar,
   },
   created() {
