@@ -1,3 +1,5 @@
+const { capitalize } = require("../utils");
+
 export default {
   computed: {
     $title() {
@@ -17,8 +19,6 @@ export default {
       if (!directories || !frontmatters) {
         return page.title;
       }
-
-      const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
       const directoryTitles = directories.map(
         (directory) => directory.title || capitalize(directory.id)

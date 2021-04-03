@@ -1,5 +1,6 @@
 const removeMd = require("remove-markdown");
 const defaults = require("./defaults");
+const { capitalize } = require("./utils");
 
 module.exports = (option, ctx) => {
   const { siteConfig, isProd } = ctx;
@@ -21,14 +22,6 @@ module.exports = (option, ctx) => {
     ];
   }
 
-  const navLinks = themeConfig.navLinks || {};
-  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
-  blogOptions.frontmatters.forEach(({ id, path }) => {
-    if (!navLinks.find((navLink) => navLink.path === path)) {
-      navLinks.push({ label: capitalize(id), path });
-    }
-  });
-  themeConfig.navLinks = navLinks;
 
   const searchOptions = Object.assign(
     defaults.searchOptions,
@@ -54,8 +47,19 @@ module.exports = (option, ctx) => {
   );
   themeConfig.components = components;
 
-  themeConfig.isProd = isProd;
+  const navLinks = themeConfig.navLinks || {};
+  blogOptions.frontmatters.forEach(({ id, path }) => {
+    if (!navLinks.find((navLink) => navLink.path === path)) {
+      navLinks.push({ label: id, path });
+    }
+  });
 
+  themeConfig.navLinks = navLinks.map(({ label, path }) => ({
+    label: capitalize(label),
+    path,
+  }));
+
+  themeConfig.isProd = isProd;
   siteConfig.themeConfig = themeConfig;
 
   const extendPageData = (page) => {

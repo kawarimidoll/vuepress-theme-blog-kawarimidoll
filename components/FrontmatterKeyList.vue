@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="frontmatterkey-list">
     <header class="flex items-baseline" v-if="!noHeader">
       <h3 class="m-4">{{ capitalize(frontmatterKey.id) }}</h3>
       <RouterLink :to="frontmatterKey.path" class="block text-accent">
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+const utils = require("../utils");
 export default {
   props: {
     frontmatterKey: { type: Object, required: true },
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     capitalize(text) {
-      return text.charAt(0).toUpperCase() + text.slice(1);
+      return utils.capitalize(text);
     },
   },
 };
