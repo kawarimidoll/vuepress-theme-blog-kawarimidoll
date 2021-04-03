@@ -29,7 +29,8 @@
     </div>
 
     <component :is="beforePaginationComponent" />
-    <!-- pagination will be here -->
+
+    <Pagination />
 
     <component :is="afterPageListComponent" />
   </div>
@@ -37,11 +38,13 @@
 
 <script>
 import Vue from "vue";
+import { Pagination } from "@vuepress/plugin-blog/lib/client/components";
 import PageMetadata from "@theme/components/PageMetadata";
 import Twemojicon from "@theme/components/Twemojicon";
 export default {
   components: {
     PageMetadata,
+    Pagination,
     Twemojicon,
   },
   props: {

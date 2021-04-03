@@ -7,11 +7,6 @@ library.add(fab, fas, far);
 
 import TitleModifier from "./mixins/TitleModifier";
 
-import {
-  Pagination,
-  SimplePagination,
-} from "@vuepress/plugin-blog/lib/client/components";
-
 import DefaultAfterFooter from "./components/extensions/AfterFooter";
 import DefaultAfterHeader from "./components/extensions/AfterHeader";
 import DefaultAfterPage from "./components/extensions/AfterPage";
@@ -25,8 +20,6 @@ import DefaultBeforeSidebar from "./components/extensions/BeforeSidebar";
 export default ({ Vue }) => {
   Vue.mixin(TitleModifier);
 
-  Vue.component("Pagination", Pagination);
-  Vue.component("SimplePagination", SimplePagination);
   Vue.component("faIcon", FontAwesomeIcon);
 
   Vue.component("DefaultAfterFooter", DefaultAfterFooter);
