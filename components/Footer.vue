@@ -1,5 +1,5 @@
 <template>
-  <div id="footer" class="bg-gray-500 centering-child h-32 xl:h-24">
+  <div id="footer" class="bg-base centering-child h-32 xl:h-24">
     <footer class="container xl:flex justify-between items-center text-white">
       <div class="centering-child xl:block">
         <EzLink
