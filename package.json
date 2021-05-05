@@ -58,7 +58,7 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "sort-package-json": "^1.49.0",
+    "sort-package-json": "^1.50.0",
     "stylint": "^2.0.0",
     "stylus-supremacy": "^2.15.0"
   }
