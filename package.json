@@ -42,7 +42,7 @@
     "markdown-it-sup": "^1.0.0",
     "markdown-it-video": "^0.6.3",
     "remove-markdown": "^0.3.0",
-    "twemoji": "^13.0.2",
+    "twemoji": "^13.1.0",
     "vuepress": "^1.8.2",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-reading-time": "^0.1.1",
